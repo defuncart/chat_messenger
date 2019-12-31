@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'package:chat_messenger/widgets/my_app.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Chat Messenger'),
-        ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
-    );
-  }
-}
+void main() => runApp(MyApp());
