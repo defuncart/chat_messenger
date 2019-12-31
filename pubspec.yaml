@@ -20,3 +20,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   
+# settings for flappy_translator package
+flappy_translator:
+  input_file_path: "assets-dev/loca/loca.csv"
+  output_dir: "lib"
+  file_name: "i18n"
+  class_name: "I18n"
+  delimiter: ";"
+  start_index: 2
+  depend_on_context: false
+  use_single_quotes: true
+  replace_no_break_spaces: false
