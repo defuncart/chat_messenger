@@ -9,9 +9,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
-      title: Text('Chat Messenger'),
+      title: Text(I18n.appTitle),
       appBar: AppBar(
-        title: Text('Chat Messenger'),
+        title: Text(I18n.appTitle),
       ),
       body: Center(
         child: Text(I18n.test),
