@@ -10,11 +10,11 @@ class I18n {
   static Map<String, String> _localizedValues;
 
   static Map<String, String> _enValues = {
-    'test': 'test',
+    'test': 'A test',
   };
 
   static Map<String, String> _deValues = {
-    'test': 'test',
+    'test': 'Ein test',
   };
 
   static Map<String, Map<String, String>> _allValues = {
