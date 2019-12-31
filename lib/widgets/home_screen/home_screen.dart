@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:chat_messenger/i18n.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
 
@@ -10,7 +12,7 @@ class HomeScreen extends StatelessWidget {
         title: Text('Chat Messenger'),
       ),
       body: Center(
-        child: Text('Hello World'),
+        child: Text(I18n.test),
       ),
     );
   }
