@@ -1,4 +1,4 @@
-package com.defuncart.chat_messenger
+package com.defuncart.messenger
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
