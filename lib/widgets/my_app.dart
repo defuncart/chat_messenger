@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<IChatService>(
-          create: (_) => FakeChatService(),
+          create: (_) => FirebaseChatService(),
         ),
       ],
       child: AdaptiveInheritance(
