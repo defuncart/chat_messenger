@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         child: AdaptiveApp(
           localizationsDelegates: [
             const I18nDelegate(),
+            GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
