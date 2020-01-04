@@ -7,4 +7,14 @@ class FakeChatService implements IChatService {
     await Future.delayed(Duration(seconds: 2));
     return true;
   }
+
+  /// The user's message stream
+  ///
+  /// Note that each message is a json map
+  Stream<List<Map<String, dynamic>>> messageStream() => null;
+
+  /// Sends a chat message
+  ///
+  /// Note that each message is a json map
+  void sendMessage(Map<String, dynamic> messageData) {}
 }
