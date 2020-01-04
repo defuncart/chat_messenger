@@ -9,16 +9,40 @@ class I18n {
 
   static String get test => _getText('test');
 
+  static String get generalNext => _getText('generalNext');
+
+  static String get popupSomethingWentWrongTitle =>
+      _getText('popupSomethingWentWrongTitle');
+
+  static String get popupSomethingWentWrongDescription =>
+      _getText('popupSomethingWentWrongDescription');
+
+  static String get popupSomethingWentWrongButton =>
+      _getText('popupSomethingWentWrongButton');
+
+  static String get createUserScreenUsernameTextFieldHint =>
+      _getText('createUserScreenUsernameTextFieldHint');
+
   static Map<String, String> _localizedValues;
 
   static Map<String, String> _enValues = {
     'appTitle': 'Chat Messenger',
     'test': 'A test',
+    'generalNext': 'Next',
+    'popupSomethingWentWrongTitle': 'Something went wrong',
+    'popupSomethingWentWrongDescription': 'Please try again',
+    'popupSomethingWentWrongButton': 'Try again',
+    'createUserScreenUsernameTextFieldHint': 'Please enter a username',
   };
 
   static Map<String, String> _deValues = {
     'appTitle': 'Chat Messenger',
     'test': 'Ein test',
+    'generalNext': 'Fortfahren',
+    'popupSomethingWentWrongTitle': 'Etwas ist schief gelaufen',
+    'popupSomethingWentWrongDescription': 'Bitte versuch es erneut',
+    'popupSomethingWentWrongButton': 'Erneut versuchen',
+    'createUserScreenUsernameTextFieldHint': 'Bitte gib einen Benutzernamen an',
   };
 
   static Map<String, Map<String, String>> _allValues = {
