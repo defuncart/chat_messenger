@@ -25,6 +25,7 @@ dependencies:
       url: https://github.com/defuncart/adaptive_library
       ref: feature/add-localization-settings-adaptive-app
   uuid: 2.0.4
+  dash_chat: ^1.0.10
 
 dev_dependencies:
   flutter_test:
