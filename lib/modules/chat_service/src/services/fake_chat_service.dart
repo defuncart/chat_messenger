@@ -4,7 +4,7 @@ import 'i_chat_service.dart';
 class FakeChatService implements IChatService {
   /// Attempts to log in the user anonymously
   Future<bool> loginUser() async {
-    Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 2));
     return true;
   }
 }
