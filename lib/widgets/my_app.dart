@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 
 import 'package:chat_messenger/i18n.dart';
 import 'package:chat_messenger/modules/chat_service/chat_service.dart';
-import 'package:chat_messenger/widgets/home_screen/home_screen.dart';
+import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
+import 'package:chat_messenger/widgets/create_user_screen/create_user_screen.dart';
+import 'package:chat_messenger/widgets/login_screen/login_screen.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
           cupertinoTheme: CupertinoThemeData(
             brightness: Brightness.light,
           ),
-          home: HomeScreen(),
+          home: UserPreferences.getUsername() == null ? CreateUserScreen() : LoginScreen(),
         ),
       ),
     );
