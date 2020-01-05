@@ -1,3 +1,4 @@
+import 'package:adaptive_library/adaptive_library.dart';
 import 'package:dash_chat/dash_chat.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -62,7 +63,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 inputDecoration: InputDecoration(
                   hintText: I18n.chatScreenMessageTextFieldHint,
                 ),
-                onSend: (message) => chatService.sendMessage(message.toJson()),
+                onSend: (message) => chatService.sendMessage(message.toJson(), messageId: message.id),
                 trailing: <Widget>[
                   IconButton(
                     icon: Icon(Icons.camera_alt),
@@ -73,6 +74,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () => onSendImage(ImageSource.gallery),
                   ),
                 ],
+                onLongPressMessage: onMessageLongPress,
               );
             } else if (snapshot.hasError || !snapshot.hasData) {
               return Center(
@@ -101,8 +103,39 @@ class _ChatScreenState extends State<ChatScreen> {
       if (file != null) {
         final url = await chatService.uploadFile(file);
         final message = ChatMessage(text: '', user: user, image: url);
-        chatService.sendMessage(message.toJson());
+        await chatService.sendMessage(message.toJson(), messageId: message.id);
       }
     } catch (_) {}
+  }
+
+  void onMessageLongPress(ChatMessage message) {
+    // TODO delete any uploaded images if message has images
+    if (message.user.uid == user.uid) {
+      showDialog(
+        context: context,
+        builder: (context) => AdaptiveAlertDialog(
+          title: Text(
+            I18n.deleteMessagePopupTitle,
+          ),
+          content: Text(
+            I18n.deleteMessagePopupDescription,
+          ),
+          actions: <AdaptiveAlertDialogButton>[
+            AdaptiveAlertDialogButton(
+              child: Text(
+                I18n.generalCancel,
+              ),
+            ),
+            AdaptiveAlertDialogButton(
+              child: Text(
+                I18n.generalDelete,
+              ),
+              onPressed: () async => await chatService.deleteMessage(message.id),
+              destructive: true,
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
