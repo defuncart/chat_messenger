@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:meta/meta.dart';
+
 /// A contract for which a chat service must adhere to
 abstract class IChatService {
   /// Attempts to log in the user anonymously
@@ -13,8 +15,11 @@ abstract class IChatService {
   /// Sends a chat message
   ///
   /// Note that each message is a json map
-  void sendMessage(Map<String, dynamic> messageData);
+  Future<void> sendMessage(Map<String, dynamic> messageData, {@required String messageId});
 
   /// Uploads a file
   Future<String> uploadFile(File file);
+
+  /// Deletes a message by id
+  Future<void> deleteMessage(String messageId);
 }
