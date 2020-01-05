@@ -65,8 +65,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 onSend: (message) => chatService.sendMessage(message.toJson()),
                 trailing: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.photo_library),
-                    onPressed: onSendImage,
+                    icon: Icon(Icons.camera_alt),
+                    onPressed: () => onSendImage(ImageSource.camera),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.photo),
+                    onPressed: () => onSendImage(ImageSource.gallery),
                   ),
                 ],
               );
@@ -85,10 +89,10 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void onSendImage() async {
+  void onSendImage(ImageSource imageSource) async {
     try {
       final file = await ImagePicker.pickImage(
-        source: ImageSource.gallery,
+        source: imageSource,
         imageQuality: imageQuality,
         maxHeight: maxHeight,
         maxWidth: maxWidth,
