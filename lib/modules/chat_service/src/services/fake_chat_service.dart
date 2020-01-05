@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'i_chat_service.dart';
 
 /// A fake chat service for testing
@@ -17,4 +19,10 @@ class FakeChatService implements IChatService {
   ///
   /// Note that each message is a json map
   void sendMessage(Map<String, dynamic> messageData) {}
+
+  /// Uploads a file
+  Future<String> uploadFile(File file) async {
+    await Future.delayed(Duration(seconds: 1));
+    return null;
+  }
 }

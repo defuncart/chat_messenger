@@ -46,5 +46,9 @@
 		<string>en</string>
 		<string>de</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To send images from photo libray as chat messages</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To send images from camera as chat messages</string>
 </dict>
 </plist>

@@ -2,10 +2,10 @@ import 'package:adaptive_library/adaptive_library.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:chat_messenger/i18n.dart';
 import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
+import 'package:chat_messenger/modules/uuid/uuid.dart';
 import 'package:chat_messenger/widgets/login_screen/login_screen.dart';
 
 /// A screen where the user can create an anonymous account
@@ -43,7 +43,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
               child: Text(I18n.generalNext),
               onPressed: () async {
                 await UserPreferences.setUsername(controller.text);
-                await UserPreferences.setUserid(Uuid().v4().toString());
+                await UserPreferences.setUserid(UUID.generate());
                 Navigator.of(context).pushReplacement(
                   // platform adaptive route by default
                   MaterialPageRoute(
