@@ -1,5 +1,6 @@
 import 'package:dash_chat/dash_chat.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import 'package:chat_messenger/i18n.dart';
@@ -14,6 +15,15 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  /// image quality setting when sending images
+  static const imageQuality = 80;
+
+  /// image max height setting when sending images
+  static const maxHeight = 400.0;
+
+  /// image max width setting when sending images
+  static const maxWidth = 400.0;
+
   ChatUser user = ChatUser();
   IChatService chatService;
 
@@ -53,6 +63,12 @@ class _ChatScreenState extends State<ChatScreen> {
                   hintText: I18n.chatScreenMessageTextFieldHint,
                 ),
                 onSend: (message) => chatService.sendMessage(message.toJson()),
+                trailing: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.photo_library),
+                    onPressed: onSendImage,
+                  ),
+                ],
               );
             } else if (snapshot.hasError || !snapshot.hasData) {
               return Center(
@@ -67,5 +83,22 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       ),
     );
+  }
+
+  void onSendImage() async {
+    try {
+      final file = await ImagePicker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: imageQuality,
+        maxHeight: maxHeight,
+        maxWidth: maxWidth,
+      );
+
+      if (file != null) {
+        final url = await chatService.uploadFile(file);
+        final message = ChatMessage(text: '', user: user, image: url);
+        chatService.sendMessage(message.toJson());
+      }
+    } catch (_) {}
   }
 }
