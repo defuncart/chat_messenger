@@ -97,4 +97,10 @@ class FirebaseChatService implements IChatService {
 
   /// Determines if a file extension is valid (for upload)
   bool _isFileExtensionValid(String fileExtension) => _validUploadFileExtensions.contains(fileExtension);
+
+  /// Deletes a file by url
+  Future<void> deleteFile(String url) async {
+    final storageReference = await FirebaseStorage.instance.getReferenceFromUrl(url);
+    await storageReference.delete();
+  }
 }

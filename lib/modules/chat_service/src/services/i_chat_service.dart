@@ -22,4 +22,7 @@ abstract class IChatService {
 
   /// Uploads a file
   Future<String> uploadFile(File file, {@required String fileId});
+
+  /// Deletes a file by url
+  Future<void> deleteFile(String url);
 }

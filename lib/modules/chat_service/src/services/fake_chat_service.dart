@@ -31,4 +31,7 @@ class FakeChatService implements IChatService {
     await Future.delayed(Duration(seconds: 1));
     return null;
   }
+
+  /// Deletes a file by url
+  Future<void> deleteFile(String url) async => await Future.delayed(Duration(milliseconds: 500));
 }
