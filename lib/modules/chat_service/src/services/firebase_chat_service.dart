@@ -6,8 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
-import 'package:chat_messenger/modules/uuid/uuid.dart';
-
 import 'i_chat_service.dart';
 
 /// A chat service using Firebase as the backend
@@ -62,14 +60,22 @@ class FirebaseChatService implements IChatService {
     });
   }
 
+  /// Deletes a message by id
+  Future<void> deleteMessage(String messageId) async {
+    final documentReference = Firestore.instance.collection(_messageCollectionPath).document(messageId);
+    await Firestore.instance.runTransaction((transaction) async {
+      await transaction.delete(documentReference);
+    });
+  }
+
   /// Uploads a file
   ///
   /// If the upload was unsuccessful, null is returned
-  Future<String> uploadFile(File file) async {
+  Future<String> uploadFile(File file, {@required String fileId}) async {
     if (file != null) {
       final fileExtension = path.extension(file.path).toLowerCase();
       if (_isFileExtensionValid(fileExtension)) {
-        final storageReferencePath = '$_imageStorageBasePath${UUID.generate()}$fileExtension';
+        final storageReferencePath = '$_imageStorageBasePath$fileId$fileExtension';
         final storageReference = FirebaseStorage.instance.ref().child(storageReferencePath);
         final uploadTask = storageReference.putFile(
           file,
@@ -91,12 +97,4 @@ class FirebaseChatService implements IChatService {
 
   /// Determines if a file extension is valid (for upload)
   bool _isFileExtensionValid(String fileExtension) => _validUploadFileExtensions.contains(fileExtension);
-
-  /// Deletes a message by id
-  Future<void> deleteMessage(String messageId) async {
-    final documentReference = Firestore.instance.collection(_messageCollectionPath).document(messageId);
-    await Firestore.instance.runTransaction((transaction) async {
-      await transaction.delete(documentReference);
-    });
-  }
 }

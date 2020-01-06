@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:chat_messenger/i18n.dart';
 import 'package:chat_messenger/modules/chat_service/chat_service.dart';
 import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
+import 'package:chat_messenger/modules/uuid/uuid.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key key}) : super(key: key);
@@ -101,7 +102,7 @@ class _ChatScreenState extends State<ChatScreen> {
       );
 
       if (file != null) {
-        final url = await chatService.uploadFile(file);
+        final url = await chatService.uploadFile(file, fileId: UUID.generate());
         final message = ChatMessage(text: '', user: user, image: url);
         await chatService.sendMessage(message.toJson(), messageId: message.id);
       }

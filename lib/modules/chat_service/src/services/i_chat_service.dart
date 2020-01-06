@@ -17,9 +17,9 @@ abstract class IChatService {
   /// Note that each message is a json map
   Future<void> sendMessage(Map<String, dynamic> messageData, {@required String messageId});
 
-  /// Uploads a file
-  Future<String> uploadFile(File file);
-
   /// Deletes a message by id
   Future<void> deleteMessage(String messageId);
+
+  /// Uploads a file
+  Future<String> uploadFile(File file, {@required String fileId});
 }
