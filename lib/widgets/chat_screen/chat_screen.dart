@@ -110,7 +110,6 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void onMessageLongPress(ChatMessage message) {
-    // TODO delete any uploaded images if message has images
     if (message.user.uid == user.uid) {
       showDialog(
         context: context,
@@ -131,12 +130,20 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Text(
                 I18n.generalDelete,
               ),
-              onPressed: () async => await chatService.deleteMessage(message.id),
+              onPressed: () async => deleteMessage(message),
               destructive: true,
             ),
           ],
         ),
       );
     }
+  }
+
+  void deleteMessage(ChatMessage message) async {
+    if (message.image != null) {
+      await chatService.deleteFile(message.image);
+    }
+
+    await chatService.deleteMessage(message.id);
   }
 }
