@@ -9,6 +9,10 @@ class I18n {
 
   static String get generalNext => _getText('generalNext');
 
+  static String get generalCancel => _getText('generalCancel');
+
+  static String get generalDelete => _getText('generalDelete');
+
   static String get popupSomethingWentWrongTitle =>
       _getText('popupSomethingWentWrongTitle');
 
@@ -24,26 +28,42 @@ class I18n {
   static String get chatScreenMessageTextFieldHint =>
       _getText('chatScreenMessageTextFieldHint');
 
+  static String get deleteMessagePopupTitle =>
+      _getText('deleteMessagePopupTitle');
+
+  static String get deleteMessagePopupDescription =>
+      _getText('deleteMessagePopupDescription');
+
   static Map<String, String> _localizedValues;
 
   static Map<String, String> _enValues = {
     'appTitle': 'Chat Messenger',
     'generalNext': 'Next',
+    'generalCancel': 'Cancel',
+    'generalDelete': 'Delete',
     'popupSomethingWentWrongTitle': 'Something went wrong',
     'popupSomethingWentWrongDescription': 'Please try again',
     'popupSomethingWentWrongButton': 'Try again',
     'createUserScreenUsernameTextFieldHint': 'Please enter a username',
     'chatScreenMessageTextFieldHint': 'Message',
+    'deleteMessagePopupTitle': 'Delete Message?',
+    'deleteMessagePopupDescription':
+        'This message will be permanently deleted from this chat.',
   };
 
   static Map<String, String> _deValues = {
     'appTitle': 'Chat Messenger',
     'generalNext': 'Fortfahren',
+    'generalCancel': 'Abbrechen',
+    'generalDelete': 'Löschen',
     'popupSomethingWentWrongTitle': 'Etwas ist schief gelaufen',
     'popupSomethingWentWrongDescription': 'Bitte versuch es erneut',
     'popupSomethingWentWrongButton': 'Erneut versuchen',
     'createUserScreenUsernameTextFieldHint': 'Bitte gib einen Benutzernamen an',
     'chatScreenMessageTextFieldHint': 'Nachricht',
+    'deleteMessagePopupTitle': 'Nachricht löschen?',
+    'deleteMessagePopupDescription':
+        'Diese Nachricht wird aus diesem Chat dauerhaft gelöscht.',
   };
 
   static Map<String, Map<String, String>> _allValues = {

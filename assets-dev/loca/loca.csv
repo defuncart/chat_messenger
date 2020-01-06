@@ -1,8 +1,12 @@
 keys;description;en;de
 appTitle;The app's title;Chat Messenger;Chat Messenger
 generalNext;General next for proceed further, onto next item;Next;Fortfahren
+generalCancel;Text to cancel something;Cancel;Abbrechen
+generalDelete;Text to delete something;Delete;Löschen
 popupSomethingWentWrongTitle;A title for the something went wrong popup;Something went wrong;Etwas ist schief gelaufen
 popupSomethingWentWrongDescription;A description for the something went wrong popup;Please try again;Bitte versuch es erneut
 popupSomethingWentWrongButton;Button text for the something went wrong popup;Try again;Erneut versuchen
 createUserScreenUsernameTextFieldHint;;Please enter a username;Bitte gib einen Benutzernamen an
 chatScreenMessageTextFieldHint;;Message;Nachricht
+deleteMessagePopupTitle;A title for the delete message popup;Delete Message?;Nachricht löschen?
+deleteMessagePopupDescription;A description for the delete message popup;This message will be permanently deleted from this chat.;Diese Nachricht wird aus diesem Chat dauerhaft gelöscht.
