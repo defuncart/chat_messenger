@@ -75,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         context: context,
                         apiKey: GiphyConfig.apiKey,
                         showPreviewPage: false,
+                        searchText: I18n.gifSearchTextHint,
                       );
 
                       if (gif != null) {

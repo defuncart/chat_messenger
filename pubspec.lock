@@ -224,7 +224,7 @@ packages:
     description:
       path: "."
       ref: "feature/optionally-show-preview-screen"
-      resolved-ref: "76d4afaab7c67a2e990ca862dc176f88ab2cb576"
+      resolved-ref: ca2141d870dc47dad664a4f7d96c9ae8b23ca706
       url: "https://github.com/defuncart/flutter_giphy_picker"
     source: git
     version: "1.0.2"
