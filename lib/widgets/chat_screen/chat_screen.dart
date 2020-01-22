@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import 'package:chat_messenger/i18n.dart';
+import 'package:chat_messenger/configs/giphy_config.dart';
 import 'package:chat_messenger/modules/chat_service/chat_service.dart';
 import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
 import 'package:chat_messenger/modules/uuid/uuid.dart';
@@ -72,7 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () async {
                       final gif = await GiphyPicker.pickGif(
                         context: context,
-                        apiKey: 'appSdG9sasG71xDf0NqEEufRt0epuE57',
+                        apiKey: GiphyConfig.apiKey,
                         showPreviewPage: false,
                       );
 
