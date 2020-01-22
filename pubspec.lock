@@ -212,6 +212,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  giphy_client:
+    dependency: transitive
+    description:
+      name: giphy_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
+  giphy_picker:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "feature/optionally-show-preview-screen"
+      resolved-ref: "76d4afaab7c67a2e990ca862dc176f88ab2cb576"
+      url: "https://github.com/defuncart/flutter_giphy_picker"
+    source: git
+    version: "1.0.2"
   glob:
     dependency: transitive
     description:
@@ -478,4 +494,4 @@ packages:
     version: "2.2.0"
 sdks:
   dart: "2.7.0"
-  flutter: "1.12.13+hotfix.5"
+  flutter: "1.12.13+hotfix.6"

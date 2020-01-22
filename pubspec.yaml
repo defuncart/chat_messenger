@@ -5,7 +5,7 @@ author: James Leahy <defuncart@gmail.com>
 
 environment:
   sdk: 2.7.0
-  flutter: 1.12.13+hotfix.5
+  flutter: 1.12.13+hotfix.6
 
 dependencies:
   flutter:
@@ -26,7 +26,11 @@ dependencies:
       url: https://github.com/defuncart/adaptive_library
       ref: feature/add-localization-settings-adaptive-app
   uuid: 2.0.4
-  dash_chat: ^1.0.10
+  dash_chat: 1.0.10
+  giphy_picker:
+    git:
+      url: https://github.com/defuncart/flutter_giphy_picker
+      ref: feature/optionally-show-preview-screen
 
 dev_dependencies:
   flutter_test:
