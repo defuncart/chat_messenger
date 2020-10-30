@@ -21,10 +21,7 @@ dependencies:
   cloud_firestore: ^0.14.2
   firebase_storage: ^4.0.1
   # third party
-  adaptive_library:
-    git:
-      url: https://github.com/defuncart/adaptive_library
-      ref: feature/add-localization-settings-adaptive-app
+  adaptive_library: ^0.5.4
   uuid: ^2.2.2
   dash_chat: ^1.1.15
 

@@ -11,12 +11,10 @@ packages:
   adaptive_library:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "feature/add-localization-settings-adaptive-app"
-      resolved-ref: "3d8525e54cf021b88e29163c2b9811435032f031"
-      url: "https://github.com/defuncart/adaptive_library"
-    source: git
-    version: "0.3.0"
+      name: adaptive_library
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.4+1"
   analyzer:
     dependency: transitive
     description:
