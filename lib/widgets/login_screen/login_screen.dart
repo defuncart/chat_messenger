@@ -1,11 +1,10 @@
 import 'package:adaptive_library/adaptive_library.dart';
 import 'package:chat_messenger/i18n.dart';
+import 'package:chat_messenger/modules/chat_service/chat_service.dart';
+import 'package:chat_messenger/widgets/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-
-import 'package:chat_messenger/modules/chat_service/chat_service.dart';
-import 'package:chat_messenger/widgets/home_screen/home_screen.dart';
 
 /// A screen which logs the user in
 class LoginScreen extends StatefulWidget {
