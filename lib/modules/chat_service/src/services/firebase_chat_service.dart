@@ -43,17 +43,17 @@ class FirebaseChatService implements IChatService {
   ///
   /// Note that each message is a json map
   Stream<List<Map<String, dynamic>>> messageStream() {
-    final stream = Firestore.instance.collection(_messageCollectionPath).snapshots();
-    return stream.map((snapshot) => snapshot.documents.map((doc) => doc.data).toList());
+    final stream = FirebaseFirestore.instance.collection(_messageCollectionPath).snapshots();
+    return stream.map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
   }
 
   /// Sends a chat message
   ///
   /// Note that each message is a json map
   Future<void> sendMessage(Map<String, dynamic> messageData, {@required String messageId}) async {
-    final documentReference = Firestore.instance.collection(_messageCollectionPath).document(messageId);
-    await Firestore.instance.runTransaction((transaction) async {
-      await transaction.set(
+    final documentReference = FirebaseFirestore.instance.collection(_messageCollectionPath).doc(messageId);
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      transaction.set(
         documentReference,
         messageData,
       );
@@ -62,9 +62,9 @@ class FirebaseChatService implements IChatService {
 
   /// Deletes a message by id
   Future<void> deleteMessage(String messageId) async {
-    final documentReference = Firestore.instance.collection(_messageCollectionPath).document(messageId);
-    await Firestore.instance.runTransaction((transaction) async {
-      await transaction.delete(documentReference);
+    final documentReference = FirebaseFirestore.instance.collection(_messageCollectionPath).doc(messageId);
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      transaction.delete(documentReference);
     });
   }
 
