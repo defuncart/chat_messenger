@@ -1,15 +1,16 @@
+import 'dart:io';
+
 import 'package:adaptive_library/adaptive_library.dart';
+import 'package:chat_messenger/configs/giphy_config.dart';
+import 'package:chat_messenger/i18n.dart';
+import 'package:chat_messenger/modules/chat_service/chat_service.dart';
+import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
+import 'package:chat_messenger/modules/uuid/uuid.dart';
 import 'package:dash_chat/dash_chat.dart';
 import 'package:flutter/material.dart';
 import 'package:giphy_picker/giphy_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
-import 'package:chat_messenger/i18n.dart';
-import 'package:chat_messenger/configs/giphy_config.dart';
-import 'package:chat_messenger/modules/chat_service/chat_service.dart';
-import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
-import 'package:chat_messenger/modules/uuid/uuid.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key key}) : super(key: key);
@@ -59,6 +60,7 @@ class _ChatScreenState extends State<ChatScreen> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final messages = List<ChatMessage>.from(snapshot.data.map((item) => ChatMessage.fromJson(item)));
+              messages.sort((a, b) => a.createdAt.compareTo(b.createdAt));
 
               return DashChat(
                 user: user,
@@ -113,15 +115,18 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void onSendImage(ImageSource imageSource) async {
     try {
-      final file = await ImagePicker.pickImage(
+      final pickedFile = await ImagePicker().getImage(
         source: imageSource,
         imageQuality: imageQuality,
         maxHeight: maxHeight,
         maxWidth: maxWidth,
       );
 
-      if (file != null) {
-        final url = await chatService.uploadFile(file, fileId: UUID.generate());
+      if (pickedFile != null) {
+        final url = await chatService.uploadFile(
+          File(pickedFile.path),
+          fileId: UUID.generate(),
+        );
         final message = ChatMessage(text: '', user: user, image: url);
         await chatService.sendMessage(message.toJson(), messageId: message.id);
       }

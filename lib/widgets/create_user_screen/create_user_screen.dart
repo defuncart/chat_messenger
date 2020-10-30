@@ -1,12 +1,11 @@
 import 'package:adaptive_library/adaptive_library.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:chat_messenger/i18n.dart';
 import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
 import 'package:chat_messenger/modules/uuid/uuid.dart';
 import 'package:chat_messenger/widgets/login_screen/login_screen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 /// A screen where the user can create an anonymous account
 class CreateUserScreen extends StatefulWidget {
