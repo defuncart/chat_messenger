@@ -58,6 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final messages = List<ChatMessage>.from(snapshot.data.map((item) => ChatMessage.fromJson(item)));
+              messages.sort((a, b) => a.createdAt.compareTo(b.createdAt));
 
               return DashChat(
                 user: user,
