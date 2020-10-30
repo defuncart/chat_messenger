@@ -34,6 +34,8 @@ class I18n {
   static String get deleteMessagePopupDescription =>
       _getText('deleteMessagePopupDescription');
 
+  static String get gifSearchTextHint => _getText('gifSearchTextHint');
+
   static Map<String, String> _localizedValues;
 
   static Map<String, String> _enValues = {
@@ -49,6 +51,7 @@ class I18n {
     'deleteMessagePopupTitle': 'Delete Message?',
     'deleteMessagePopupDescription':
         'This message will be permanently deleted from this chat.',
+    'gifSearchTextHint': 'Search',
   };
 
   static Map<String, String> _deValues = {
@@ -64,6 +67,7 @@ class I18n {
     'deleteMessagePopupTitle': 'Nachricht löschen?',
     'deleteMessagePopupDescription':
         'Diese Nachricht wird aus diesem Chat dauerhaft gelöscht.',
+    'gifSearchTextHint': 'Suchen',
   };
 
   static Map<String, Map<String, String>> _allValues = {

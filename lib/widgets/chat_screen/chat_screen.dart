@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:adaptive_library/adaptive_library.dart';
+import 'package:chat_messenger/configs/giphy_config.dart';
 import 'package:chat_messenger/i18n.dart';
 import 'package:chat_messenger/modules/chat_service/chat_service.dart';
 import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
 import 'package:chat_messenger/modules/uuid/uuid.dart';
 import 'package:dash_chat/dash_chat.dart';
 import 'package:flutter/material.dart';
+import 'package:giphy_picker/giphy_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -68,6 +70,23 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 onSend: (message) => chatService.sendMessage(message.toJson(), messageId: message.id),
                 trailing: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.gif),
+                    onPressed: () async {
+                      final gif = await GiphyPicker.pickGif(
+                        context: context,
+                        apiKey: GiphyConfig.apiKey,
+                        showPreviewPage: false,
+                        searchText: I18n.gifSearchTextHint,
+                      );
+
+                      if (gif != null) {
+                        final gifUrl = gif.images.original.url;
+                        final message = ChatMessage(text: '', user: user, image: gifUrl);
+                        chatService.sendMessage(message.toJson(), messageId: message.id);
+                      }
+                    },
+                  ),
                   IconButton(
                     icon: Icon(Icons.camera_alt),
                     onPressed: () => onSendImage(ImageSource.camera),
@@ -145,7 +164,8 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void deleteMessage(ChatMessage message) async {
-    if (message.image != null) {
+    // HACK to avoid trying to delete images from giphy which are not stored on firebase
+    if (message.image != null && !message.image.contains('giphy')) {
       await chatService.deleteFile(message.image);
     }
 

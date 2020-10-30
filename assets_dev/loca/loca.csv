@@ -10,3 +10,4 @@ createUserScreenUsernameTextFieldHint;;Please enter a username;Bitte gib einen B
 chatScreenMessageTextFieldHint;;Message;Nachricht
 deleteMessagePopupTitle;A title for the delete message popup;Delete Message?;Nachricht löschen?
 deleteMessagePopupDescription;A description for the delete message popup;This message will be permanently deleted from this chat.;Diese Nachricht wird aus diesem Chat dauerhaft gelöscht.
+gifSearchTextHint;A hint text when searching for gifs;Search;Suchen
