@@ -6,6 +6,7 @@ import 'package:chat_messenger/i18n.dart';
 import 'package:chat_messenger/modules/chat_service/chat_service.dart';
 import 'package:chat_messenger/modules/user_preferences/user_preferences.dart';
 import 'package:chat_messenger/modules/uuid/uuid.dart';
+import 'package:chat_messenger/widgets/create_user_screen/create_user_screen.dart';
 import 'package:dash_chat/dash_chat.dart';
 import 'package:flutter/material.dart';
 import 'package:giphy_picker/giphy_picker.dart';
@@ -53,11 +54,32 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(I18n.appTitle),
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (index) async {
+              await context.read<IChatService>().logoutUser();
+              await UserPreferences.clear();
+              Navigator.of(context).pushReplacement(
+                // platform adaptive route by default
+                MaterialPageRoute(
+                  builder: (context) => CreateUserScreen(),
+                ),
+              );
+            },
+            color: Theme.of(context).scaffoldBackgroundColor,
+            itemBuilder: (_) => [
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text(I18n.generalLogout),
+              )
+            ],
+          ),
+        ],
       ),
       body: SafeArea(
         child: StreamBuilder(
           stream: chatService.messageStream(),
-          builder: (context, snapshot) {
+          builder: (_, snapshot) {
             if (snapshot.hasData) {
               final messages = List<ChatMessage>.from(snapshot.data.map((item) => ChatMessage.fromJson(item)));
               messages.sort((a, b) => a.createdAt.compareTo(b.createdAt));
@@ -98,7 +120,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
                 onLongPressMessage: onMessageLongPress,
               );
-            } else if (snapshot.hasError || !snapshot.hasData) {
+            } else if (snapshot.hasError) {
               return Center(
                 child: Text(I18n.popupSomethingWentWrongTitle),
               );

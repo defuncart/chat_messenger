@@ -7,6 +7,9 @@ abstract class IChatService {
   /// Attempts to log in the user anonymously
   Future<bool> loginUser();
 
+  /// Attempts to log out the user anonymously
+  Future<void> logoutUser();
+
   /// The user's message stream
   ///
   /// Note that each message is a json map
