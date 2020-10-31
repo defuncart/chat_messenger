@@ -79,7 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: StreamBuilder(
           stream: chatService.messageStream(),
-          builder: (context, snapshot) {
+          builder: (_, snapshot) {
             if (snapshot.hasData) {
               final messages = List<ChatMessage>.from(snapshot.data.map((item) => ChatMessage.fromJson(item)));
               messages.sort((a, b) => a.createdAt.compareTo(b.createdAt));
@@ -120,7 +120,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
                 onLongPressMessage: onMessageLongPress,
               );
-            } else if (snapshot.hasError || !snapshot.hasData) {
+            } else if (snapshot.hasError) {
               return Center(
                 child: Text(I18n.popupSomethingWentWrongTitle),
               );
