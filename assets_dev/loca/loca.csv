@@ -3,6 +3,7 @@ appTitle;The app's title;Chat Messenger;Chat Messenger
 generalNext;General next for proceed further, onto next item;Next;Fortfahren
 generalCancel;Text to cancel something;Cancel;Abbrechen
 generalDelete;Text to delete something;Delete;Löschen
+generalLogout;Logout;Ausloggen
 popupSomethingWentWrongTitle;A title for the something went wrong popup;Something went wrong;Etwas ist schief gelaufen
 popupSomethingWentWrongDescription;A description for the something went wrong popup;Please try again;Bitte versuch es erneut
 popupSomethingWentWrongButton;Button text for the something went wrong popup;Try again;Erneut versuchen
