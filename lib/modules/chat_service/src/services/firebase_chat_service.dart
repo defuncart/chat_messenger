@@ -39,6 +39,10 @@ class FirebaseChatService implements IChatService {
     return false;
   }
 
+  /// Attempts to log out the user anonymously
+  @override
+  Future<void> logoutUser() async => await FirebaseAuth.instance.signOut();
+
   /// The user's message stream
   ///
   /// Note that each message is a json map

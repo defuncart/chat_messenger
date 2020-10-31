@@ -12,6 +12,10 @@ class FakeChatService implements IChatService {
     return true;
   }
 
+  /// Attempts to log out the user anonymously
+  @override
+  Future<void> logoutUser() async => await Future.delayed(Duration(seconds: 2));
+
   /// The user's message stream
   ///
   /// Note that each message is a json map
