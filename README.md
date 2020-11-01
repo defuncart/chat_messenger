@@ -4,7 +4,7 @@ A simple chat messenger build using Flutter and Firebase.
 
 ## About
 
-Presently targets Android and IOS. macOS support is planned.
+Presently targets Android, iOS and macOS.
 
 ## Getting Started
 

@@ -46,6 +46,7 @@ app.*.map.json
 # Firebase
 /android/app/google-services.json
 /ios/Runner/GoogleService-Info.plist
+/macos/Runner/GoogleService-Info.plist
 
 # Giphy
 /lib/configs/giphy_config.dart

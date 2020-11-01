@@ -33,6 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
   ChatUser user = ChatUser();
   IChatService chatService;
 
+  bool get isMobile => Platform.isIOS || Platform.isAndroid;
+
   @override
   void initState() {
     super.initState();
@@ -109,14 +111,19 @@ class _ChatScreenState extends State<ChatScreen> {
                       }
                     },
                   ),
-                  IconButton(
-                    icon: Icon(Icons.camera_alt),
-                    onPressed: () => onSendImage(ImageSource.camera),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.photo),
-                    onPressed: () => onSendImage(ImageSource.gallery),
-                  ),
+                  if (isMobile)
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.camera_alt),
+                          onPressed: () => onSendImage(ImageSource.camera),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.photo),
+                          onPressed: () => onSendImage(ImageSource.gallery),
+                        ),
+                      ],
+                    ),
                 ],
                 onLongPressMessage: onMessageLongPress,
               );
