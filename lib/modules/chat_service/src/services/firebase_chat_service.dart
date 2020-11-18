@@ -16,6 +16,12 @@ class FirebaseChatService implements IChatService {
   /// A base path for image storage
   static const _imageStorageBasePath = 'chat_images/';
 
+  /// The createdBy key used to order by date
+  static const _createdAtKey = 'createdAt';
+
+  /// How many messages are returned per request
+  static const _limitMessagesPerRequest = 5;
+
   /// A list of valid upload file extensions
   static const _validUploadFileExtensions = const ['.jpg', '.png'];
 
@@ -45,10 +51,13 @@ class FirebaseChatService implements IChatService {
 
   /// The user's message stream
   ///
-  /// Note that each message is a json map
+  /// Note that each message is a json map and that the list is sent in order when sent (oldest first)
   Stream<List<Map<String, dynamic>>> messageStream() {
-    final stream = FirebaseFirestore.instance.collection(_messageCollectionPath).snapshots();
-    return stream.map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
+    final query = FirebaseFirestore.instance
+        .collection(_messageCollectionPath)
+        .orderBy(_createdAtKey, descending: true)
+        .limit(_limitMessagesPerRequest);
+    return query.snapshots().map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
   }
 
   /// Sends a chat message
